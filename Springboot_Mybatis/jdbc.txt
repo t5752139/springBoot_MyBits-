@@ -1,0 +1,10 @@
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `pwd` varchar(255) NOT NULL,
+  `sex` varchar(255) NOT NULL,
+  `home` varchar(255) NOT NULL,
+  `info` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=10125593 DEFAULT CHARSET=utf8;

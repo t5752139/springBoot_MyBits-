@@ -4,7 +4,7 @@
 
 
     <select id="selectUser" resultType="com.example.entity.User">
-        select * from user1
+        select * from user
     </select>
 
 
