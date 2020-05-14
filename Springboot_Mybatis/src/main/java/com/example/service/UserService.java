@@ -5,6 +5,8 @@ import com.example.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Author:0xOO
  * @Date: 2018/9/26 0026
@@ -14,7 +16,13 @@ import org.springframework.stereotype.Service;
 public class UserService {
     @Autowired
     UserMapper userMapper;
-    public User Sel(int id){
-        return userMapper.Sel(id);
+
+
+    /**
+     * 查询
+     */
+    public List<User> select(){
+       return userMapper.selectUser();
     }
+
 }
