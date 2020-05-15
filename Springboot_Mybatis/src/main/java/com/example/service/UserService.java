@@ -30,39 +30,35 @@ public class UserService {
     /**
      * 查询 树结构
      */
-
     public List<Tree> selectTree(){
 
         List<Tree> trees = userMapper.selectTree();
         List<Tree> list = new ArrayList<>();
-        for (Tree tree : trees) {
-            //一级节点
+        trees.forEach(tree -> {
             if(tree.getpId()==0){
-                Tree t=new Tree();
-                t.setId(tree.getId());
-                t.setName(tree.getName());
-                t.setpId(tree.getpId());
-                tree(trees,t,tree.getId());
-                list.add(t);
+                tree(trees,tree,tree.getId());
+                list.add(tree);
             }
-        }
+        });
         return list;
     }
+
+    /**
+     * 递归 排序下边n个树节点
+     * @param trees
+     * @param tree
+     * @param id
+     */
     private void tree( List<Tree> trees,Tree tree,int id){
         List<Tree> list =new ArrayList<>();
-        for (Tree tree1 : trees) {
+
+        trees.forEach(tree1 -> {
             if(tree1.getpId()==id){
-                Tree t=new Tree();
-                t.setId(tree1.getId());
-                t.setName(tree1.getName());
-                t.setpId(tree1.getpId());
-                tree(trees,t,tree1.getId());
-                list.add(t);
+                tree(trees,tree1,tree1.getId());
+                list.add(tree1);
             }
-        }
+        });
         tree.setList(list);
-
-
     }
 
 }
