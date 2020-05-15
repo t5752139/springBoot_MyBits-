@@ -7,4 +7,8 @@
         select * from user
     </select>
 
+    <select id="selectTree" resultType="com.example.entity.Tree">
+
+        select * from tree
+    </select>
 </mapper>

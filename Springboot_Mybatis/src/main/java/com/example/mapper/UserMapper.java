@@ -1,5 +1,6 @@
 package com.example.mapper;
 
+import com.example.entity.Tree;
 import com.example.entity.User;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +17,6 @@ public interface UserMapper {
 
 
     List<User> selectUser();
+
+    List<Tree> selectTree();
 }

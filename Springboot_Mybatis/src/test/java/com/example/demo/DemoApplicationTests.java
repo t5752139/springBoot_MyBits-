@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.entity.Tree;
 import com.example.entity.User;
 import com.example.service.UserService;
 import org.junit.Test;
@@ -19,10 +20,10 @@ public class DemoApplicationTests {
 	private UserService userService;
 	@Test
 	public void contextLoads() {
-		List<User> select = userService.select();
+		List<Tree> trees = userService.selectTree();
 
 
-		System.out.println(select);
+		System.out.println(trees);
 	}
 
 }
