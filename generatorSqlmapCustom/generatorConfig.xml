@@ -43,7 +43,7 @@
 		
 		<!-- 指定数据库表 -->
 <!-- 		<table schema="" tableName="ass_entrust" domainObjectName="Entrust"></table> -->
-		<table schema="" tableName="menu" domainObjectName="menu"></table>
+		<table schema="" tableName="menu" domainObjectName="Menu"></table>
 <!-- 		<table schema="" tableName="us_professional_role" domainObjectName="ProfessionalRole"></table> -->
 <!-- 		<table schema="" tableName="sys_permission" domainObjectName="Permission"></table> -->
 <!-- 		<table schema="" tableName="sys_role_permission" domainObjectName="RolePermission"></table> -->
