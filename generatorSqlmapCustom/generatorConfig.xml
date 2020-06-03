@@ -10,8 +10,9 @@
 		</commentGenerator>
 		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
 		<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-			connectionURL="jdbc:mysql://192.168.0.103:3306/jyg?useSSL=FALSE&amp;serverTimezone=GMT%2B8" userId="kypg"
-			password="ab1234!@#$AB">
+			connectionURL="jdbc:mysql://localhost:3306/test?useSSL=FALSE&amp;serverTimezone=GMT%2B8"
+						userId="root"
+			password="root">
 		</jdbcConnection>
 		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 
 			和 NUMERIC 类型解析为java.math.BigDecimal -->
@@ -42,7 +43,7 @@
 		
 		<!-- 指定数据库表 -->
 <!-- 		<table schema="" tableName="ass_entrust" domainObjectName="Entrust"></table> -->
-		<table schema="" tableName="us_msg_bus" domainObjectName="MsgBus"></table>
+		<table schema="" tableName="menu" domainObjectName="menu"></table>
 <!-- 		<table schema="" tableName="us_professional_role" domainObjectName="ProfessionalRole"></table> -->
 <!-- 		<table schema="" tableName="sys_permission" domainObjectName="Permission"></table> -->
 <!-- 		<table schema="" tableName="sys_role_permission" domainObjectName="RolePermission"></table> -->

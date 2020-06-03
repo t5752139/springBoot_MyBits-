@@ -49,16 +49,14 @@ public class UserService {
      * @param tree
      * @param id
      */
-    private void tree( List<Tree> trees,Tree tree,int id){
-        List<Tree> list =new ArrayList<>();
-
+    private void tree( List<Tree> trees,Tree tree,int id) {
+        List<Tree> list = new ArrayList<>();
         trees.forEach(tree1 -> {
-            if(tree1.getpId()==id){
-                tree(trees,tree1,tree1.getId());
+            if (tree1.getpId() == id) {
+                tree(trees, tree1, tree1.getId());
                 list.add(tree1);
             }
         });
         tree.setList(list);
     }
-
 }
