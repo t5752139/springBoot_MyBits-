@@ -1,8 +1,9 @@
 package com.example.demo;
 
-import com.example.entity.Tree;
-import com.example.entity.User;
-import com.example.service.UserService;
+import com.example.DemoApplication;
+import com.example.entity.Menu;
+import com.example.model.ReturnValue;
+import com.example.service.MenuService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,18 +13,19 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = DemoApplication.class)
 public class DemoApplicationTests {
 
 
-	@Autowired
-	private UserService userService;
-	@Test
-	public void contextLoads() {
-		List<Tree> trees = userService.selectTree();
+    @Autowired
+    private MenuService menuService;
 
+    @Test
+    public void tets1(){
+        ReturnValue returnValue = menuService.find();
+        List<Menu> data = (List<Menu>) returnValue.getData();
 
-		System.out.println(trees);
-	}
+        System.out.println(data);
+    }
 
 }

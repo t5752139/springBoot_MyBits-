@@ -17,17 +17,12 @@ public class Menu {
     private String url;
 
     /**
-     * 是否是叶子节点
-     */
-    private Integer isCharge;
-
-    /**
-     * 
+     * 菜单m,按钮b
      */
     private String typerCode;
 
     /**
-     * 
+     * 类型,部门dept,菜单menu
      */
     private String menuCode;
 
@@ -58,14 +53,6 @@ public class Menu {
 
     public void setUrl(String url) {
         this.url = url == null ? null : url.trim();
-    }
-
-    public Integer getIsCharge() {
-        return isCharge;
-    }
-
-    public void setIsCharge(Integer isCharge) {
-        this.isCharge = isCharge;
     }
 
     public String getTyperCode() {

@@ -294,66 +294,6 @@ public class MenuExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsChargeIsNull() {
-            addCriterion("is_charge is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsChargeIsNotNull() {
-            addCriterion("is_charge is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsChargeEqualTo(Integer value) {
-            addCriterion("is_charge =", value, "isCharge");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsChargeNotEqualTo(Integer value) {
-            addCriterion("is_charge <>", value, "isCharge");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsChargeGreaterThan(Integer value) {
-            addCriterion("is_charge >", value, "isCharge");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsChargeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("is_charge >=", value, "isCharge");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsChargeLessThan(Integer value) {
-            addCriterion("is_charge <", value, "isCharge");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsChargeLessThanOrEqualTo(Integer value) {
-            addCriterion("is_charge <=", value, "isCharge");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsChargeIn(List<Integer> values) {
-            addCriterion("is_charge in", values, "isCharge");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsChargeNotIn(List<Integer> values) {
-            addCriterion("is_charge not in", values, "isCharge");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsChargeBetween(Integer value1, Integer value2) {
-            addCriterion("is_charge between", value1, value2, "isCharge");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsChargeNotBetween(Integer value1, Integer value2) {
-            addCriterion("is_charge not between", value1, value2, "isCharge");
-            return (Criteria) this;
-        }
-
         public Criteria andTyperCodeIsNull() {
             addCriterion("typer_code is null");
             return (Criteria) this;
