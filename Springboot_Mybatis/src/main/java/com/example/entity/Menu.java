@@ -12,6 +12,11 @@ public class Menu {
     private Integer parentId;
 
     /**
+     * 名称
+     */
+    private String name;
+
+    /**
      * lujing
      */
     private String url;
@@ -29,7 +34,7 @@ public class Menu {
     /**
      * 
      */
-    private String name;
+    private Integer companyId;
 
     public Integer getId() {
         return id;
@@ -45,6 +50,14 @@ public class Menu {
 
     public void setParentId(Integer parentId) {
         this.parentId = parentId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
     public String getUrl() {
@@ -71,11 +84,11 @@ public class Menu {
         this.menuCode = menuCode == null ? null : menuCode.trim();
     }
 
-    public String getName() {
-        return name;
+    public Integer getCompanyId() {
+        return companyId;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
     }
 }
