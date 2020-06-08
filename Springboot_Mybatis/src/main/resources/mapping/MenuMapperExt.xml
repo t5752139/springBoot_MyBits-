@@ -13,10 +13,75 @@
         </foreach>
 
     </insert>
+    <insert id="addRoleMenus">
+        insert into  menu_role (id,menu_id,role_id)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (
+             #{item.id},
+            #{item.menuId},
+            #{item.roleId}
+            )
+        </foreach>
+
+
+    </insert>
+    <update id="updataMenu"  parameterType="com.example.entity.Menu">
+        update menu
+        <set>
+            <if test="parentId != null">
+                parent_id = #{parentId},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="url != null">
+                url = #{url},
+            </if>
+            <if test="typerCode != null">
+                typer_code = #{typerCode},
+            </if>
+            <if test="menuCode != null">
+                menu_code = #{menuCode},
+            </if>
+            <if test="companyId != null">
+                company_id = #{companyId},
+            </if>
+        </set>
+        where
+        id = #{id}
+    </update>
+    <delete id="delectUserRole">
+        delete
+        from
+        user_role
+        where
+        user_id = #{uid}
+        and
+        role_id = #{id}
+    </delete>
+    <delete id="deleteRole">
+        delete
+        from
+        role
+        where
+        id = #{id}
+
+    </delete>
+    <delete id="deleleteMenuRole">
+        delete
+        from
+        menu_role
+        where
+        role_id = #{id}
+
+    </delete>
+
+
     <resultMap id="menus" type="com.example.entity.vo.MenuVo">
-    <result column="id" property="id"/>
-    <result column="parentId" property="parentId"/>
-    <result column="name" property="name"/>
+        <result column="id" property="id"/>
+        <result column="parentId" property="parentId"/>
+        <result column="name" property="name"/>
     </resultMap>
     <select id="datagrid" resultMap="menus">
              SELECT
@@ -31,7 +96,107 @@
             INNER JOIN
             menu m ON m.id = mr.menu_id
             WHERE
-            ur.user_id = 1
+            ur.user_id = #{uid}
+
+    </select>
+    <select id="permissions" resultType="com.example.entity.Menu">
+                SELECT
+                DISTINCT
+                          m.id id,
+					m.parent_id parentId,
+m.name name,
+m.url url,
+m.typer_code typerCode,
+m.menu_code menuCode,
+m.company_id companyId
+                FROM
+                user_role u
+                INNER JOIN
+                menu_role mr ON  u.role_id = mr.role_id
+                 AND mr.menu_id = #{mid}
+                INNER JOIN
+                menu m ON  m.id = mr.menu_id
+                WHERE
+                u.user_id = #{id}
+    </select>
+    <select id="getRoles" resultType="com.example.entity.Role">
+        SELECT
+        DISTINCT
+          r.id id,
+            r.`name` `name`,
+            r.role_code roleCode,
+            r.system_name systemName,
+            r.company_id companyId
+        FROM
+        user_role ur
+        INNER JOIN
+        role r ON r.id = ur.role_id
+        AND r.company_id = #{companyId}
+        WHERE
+        ur.user_id = #{uid}
+    </select>
+    <select id="getRoleIds" resultType="java.lang.Integer">
+        SELECT
+        DISTINCT
+        mr.menu_id
+        FROM
+        user_role ur
+        INNER JOIN
+        menu_role mr ON mr.role_id = ur.role_id
+        WHERE
+        ur.user_id = #{id}
+
+
+    </select>
+    <select id="fandUserRole" resultType="com.example.entity.UserRole">
+        select
+        id id,
+        user_id userId,
+        role_id roleId
+        from
+        user_role
+        where
+        user_id = #{uid}
+        and
+        role_id = #{roleId}
+    </select>
+    <select id="fandById" resultType="com.example.entity.User">
+
+        select
+        *
+        from
+        user
+        where
+        id = #{id}
+
+    </select>
+    <select id="selectRole" resultType="com.example.entity.Role">
+        SELECT
+        r.id id,
+        r.name `name`,
+        r.role_code roleCode,
+        r.system_name systemName,
+        r.company_id companyId
+         FROM
+        role r
+        LEFT JOIN
+        user_role ur ON ur.role_id = r.id
+        WHERE
+        ur.user_id = #{uid}
+    </select>
+    <select id="fundByMenuId" resultType="com.example.entity.Menu">
+        select
+                      m.id id,
+					m.parent_id parentId,
+m.name name,
+m.url url,
+m.typer_code typerCode,
+m.menu_code menuCode,
+m.company_id companyId
+    from
+    menu m
+    where
+    m.id = #{id}
 
     </select>
 

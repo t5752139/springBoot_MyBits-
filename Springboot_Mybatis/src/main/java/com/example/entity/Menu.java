@@ -1,39 +1,51 @@
 package com.example.entity;
 
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotNull;
+
 public class Menu {
     /**
      * 主键
      */
+    @NotNull
+    @ApiModelProperty(value = "主键", required = true)
     private Integer id;
 
     /**
      * 父id
      */
+    @ApiModelProperty(value = "父id", required = true)
     private Integer parentId;
 
     /**
      * 名称
      */
+    @ApiModelProperty(value = "名称", required = true)
     private String name;
 
     /**
      * lujing
      */
+    @ApiModelProperty(value = "url", required = true)
     private String url;
 
     /**
      * 菜单m,按钮b
      */
+    @ApiModelProperty(value = "菜单m,按钮b", required = true)
     private String typerCode;
 
     /**
      * 类型,部门dept,菜单menu
      */
+    @ApiModelProperty(value = "类型,部门ass,pet,sys", required = true)
     private String menuCode;
 
     /**
      * 
      */
+    @ApiModelProperty(value = "公司id", required = true)
     private Integer companyId;
 
     public Integer getId() {

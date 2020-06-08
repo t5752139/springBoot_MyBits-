@@ -6,6 +6,7 @@ import com.example.entity.MenuFunction;
 import com.example.examle.MenuExample;
 import com.example.mapper.MenuFunctionMapper;
 import com.example.mapper.MenuMapper;
+import com.example.service.MenuService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,17 @@ public class DemoApplicationTests {
    private MenuMapper menuMapper;
     @Autowired
     private MenuFunctionMapper menuFunctionMapper;
+
+    @Autowired
+    private MenuService menuService;
+
+    @Test
+    public void  test(){
+       // menuService.updataMenu(1, menu);
+    }
+
+
+
 
     @Test
     public void tets1(){
@@ -46,10 +58,8 @@ public class DemoApplicationTests {
             menuFunctionMapper.insertSelective(function1);
             menuFunctionMapper.insertSelective(function2);
             menuFunctionMapper.insertSelective(function3);
-
-
-
         }
+
 
 
 
