@@ -143,7 +143,9 @@ public class MenuServiceImpl implements MenuService {
         List<Menu> ody = list.stream().filter(n -> "ody".equals(n.getTyperCode())).collect(Collectors.toList());
         List <Menu> ass= new ArrayList<>();
         if(flag)
-         ass = list.stream().filter(n -> "ass".equals(n.getTyperCode())).collect(Collectors.toList());
+            ass = list.stream().filter(n -> "ass".equals(n.getTyperCode()) || "pet".equals(n.getTyperCode())).collect(Collectors.toList());
+        else
+            list= list.stream().filter(n -> !"pet".equals(n.getTyperCode())).collect(Collectors.toList());
         List<Menu> menus = new ArrayList<>();
         menus.add(menu);
         //取下面节点
@@ -302,9 +304,9 @@ public class MenuServiceImpl implements MenuService {
     }
     private void getMenus(List<Menu> menus, List<Menu> list, Integer parentId, boolean falg) {
         for (Menu menu : menus) {
+            if("pet".equals(menu.getTyperCode()))
+                continue;
             if (menu.getParentId() == parentId) {
-                if("pet".equals(menu.getTyperCode()))
-                    continue;
                 list.add(menu);
                 getMenus(menus, list, menu.getId(), falg);
             }
