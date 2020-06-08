@@ -141,7 +141,7 @@ public class MenuServiceImpl implements MenuService {
         menuExample.createCriteria().andCompanyIdEqualTo(menu.getCompanyId());
         List<Menu> list = menuMapper.selectByExample(menuExample);
         List<Menu> ody = list.stream().filter(n -> "ody".equals(n.getTyperCode())).collect(Collectors.toList());
-        List <Menu> ass= null;
+        List <Menu> ass= new ArrayList<>();
         if(flag)
          ass = list.stream().filter(n -> "ass".equals(n.getTyperCode())).collect(Collectors.toList());
         List<Menu> menus = new ArrayList<>();
@@ -250,12 +250,17 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public ReturnValue addMenu(Integer uid, Menu menu) {
+        //admin 用户可以直接添加
+        User user = menuMapperExt.fandById(uid);
+        if("admin".equals(user.getRealname()) ) {
+            menuMapper.insertSelective(menu);
+            return ReturnValue.success();
+        }
+        if(menu.getParentId() == 0)
+            return ReturnValue.failMessage("一级节点必须有admin可以创建");
         //查询用户是否又该用的权限
         List<Integer> roleIds = menuMapperExt.getRoleIds(uid);
         boolean b = roleIds.stream().anyMatch(s -> menu.getParentId() == s);
-       /* User user = menuMapperExt.fandById(uid);
-        if("admin".equals(user.getRealname()))
-            b=true;*/
         if(b){
             menuMapper.insertSelective(menu);
             List<MenuRole> collect = menuMapperExt.selectRole(uid).stream().map(n -> {
